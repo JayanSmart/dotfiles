@@ -4,9 +4,15 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     
+
+    # Used for user packages and dotfiles
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs"; # Use system packages list for their inputs
+    };
   };
 
-  outputs = { self, nixpkgs }@inputs:
+  outputs = { nixpkgs, ... }@inputs:
     let 
 
       globals = rec {
@@ -14,7 +20,6 @@
 	fullName = "Jayan Smart";
 	gitName = fullName;
 	gitEmail = "jayandrinsmart@gmail.com";
-	dotfilesRepo = "https://github.com/jayansmart/dotfiles";
       };
 
       # Overlays to use once I understand what these are
@@ -36,7 +41,7 @@
       };
 
       homeConfigurations = {
-	mixos = nixosConfiguration.mixos.config.home-manager.users.${globals.user}.home;
+	mixos = nixosConfigurations.mixos.config.home-manager.users.${globals.user}.home;
       };
       
 
@@ -80,7 +85,7 @@
 	      shellcheck
 	    ];
 	  };
-	};
+	}
       );
 
       #Templates for starting new projects quickly
@@ -96,5 +101,4 @@
 	};
       };
     };    
-  };
 }

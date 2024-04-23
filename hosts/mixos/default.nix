@@ -18,30 +18,29 @@ inputs.nixpkgs.lib.nixosSystem {
     {
       nixpkgs.overlays = overlays;
       networking.hostname = "mixos";
-    };
 
-    # Theming
+      # Theming
+      gui.enable = true;
 
-    gui.enable = true;
-
-    theme = {
-      colors = (import ../.../colorscheme/gruvbox-dark).dark;
-      dark = true;
-    };
+      theme = {
+        colors = (import ../../colorscheme/gruvbox-dark).dark;
+        dark = true;
+      };
     
 
-    # Programs and services
-    neovim.enable = true;
-    media.enable = true;
-    dotfiles.enable = true
-    firefox.enable = true;
-    discord.enable = true;
-    nixlang.enable = true;
-    rust.enable = true;
-    gaming = {
-      steam.enable = true;
-    };
-    openvpm.enable = true;
-    # jellyfin -- needs modules/nixos/jellyfin/default.nix
+      # Programs and services
+      neovim.enable = true;
+      media.enable = true;
+#      dotfiles.enable = true;
+      firefox.enable = true;
+#      discord.enable = true;
+      nixlang.enable = true;
+      rust.enable = true;
+      gaming = {
+        steam.enable = true;
+      };
+      openvpn.enable = true;
+      # jellyfin -- needs modules/nixos/jellyfin/default.nix
+    }
   ];
-};
+}
