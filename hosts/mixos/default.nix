@@ -17,7 +17,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/nixos
     {
       nixpkgs.overlays = overlays;
-      networking.hostname = "mixos";
+#      networking.hostname = "mixos";
 
       # Theming
       gui.enable = true;
@@ -29,18 +29,23 @@ inputs.nixpkgs.lib.nixosSystem {
     
 
       # Programs and services
-      neovim.enable = true;
-      media.enable = true;
+#      neovim.enable = true;
+#      media.enable = true;
 #      dotfiles.enable = true;
-      firefox.enable = true;
+#      firefox.enable = true;
 #      discord.enable = true;
-      nixlang.enable = true;
-      rust.enable = true;
-      gaming = {
-        steam.enable = true;
-      };
-      openvpn.enable = true;
+#      nixlang.enable = true;
+#      rust.enable = true;
+#      gaming = {
+#        steam.enable = true;
+#      };
+#      openvpn.enable = true;
       # jellyfin -- needs modules/nixos/jellyfin/default.nix
+      imports = [
+	./configuration.nix
+      ];
+
+
     }
   ];
 }

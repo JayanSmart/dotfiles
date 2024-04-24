@@ -7,8 +7,7 @@
 {
 
   imports = [
-
-
+    ./shell
   ];
 
   options = {
