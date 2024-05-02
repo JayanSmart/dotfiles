@@ -35,7 +35,7 @@
     in rec {
 
       # List of all sytems this config maintains
-      # Primary personal machine: nixos-rebuils switch --flake .@mixos
+      # Primary personal machine: nixos-rebuild switch --flake .#mixos
       nixosConfigurations = {
 	mixos = import ./hosts/mixos { inherit inputs globals overlays; };
       };

@@ -5,15 +5,15 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   nix.settings = {
-    experimental-features = [ 
-	"nix-command" 
-	"flakes" 
+    experimental-features = [
+      "nix-command"
+      "flakes"
     ];
   };
 
@@ -24,7 +24,7 @@
     useOSProber = true;
     configurationLimit = 5;
   };
-  
+
   networking.hostName = "mixos"; # Define your hostname.
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -37,7 +37,9 @@
   networking.networkmanager.enable = true;
 
   services.openvpn.servers = {
-    nordVPN = { config = '' config /root/jayan/openvpn/nordvpn.conf ''; };
+    nordVPN = {
+      config = ''config /root/jayan/openvpn/nordvpn.conf '';
+    };
   };
 
   # Set your time zone.
@@ -103,13 +105,16 @@
   users.users.jayan = {
     isNormalUser = true;
     description = "Jayan Smaart";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       firefox
       kate
       vlc
       libvlc
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -130,7 +135,7 @@
     jellyfin-ffmpeg
     openvpn
     htop
-    
+    plex
   ];
 
   #################################
@@ -150,9 +155,6 @@
     enable = true;
     openFirewall = true;
   };
-  
-  
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -180,5 +182,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
