@@ -17,7 +17,12 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/nixos
     {
       nixpkgs.overlays = overlays;
-#      networking.hostname = "mixos";
+
+      networking = {
+        hostName = "mixos";
+        #  wireless.enable = true; # Enables wireless support via wpa_supplicant.
+        networkmanager.enable = true;
+      };
 
       # Theming
       gui.enable = true;
@@ -26,26 +31,21 @@ inputs.nixpkgs.lib.nixosSystem {
         colors = (import ../../colorscheme/gruvbox-dark).dark;
         dark = true;
       };
-    
 
       # Programs and services
-#      neovim.enable = true;
-#      media.enable = true;
-#      dotfiles.enable = true;
-#      firefox.enable = true;
-#      discord.enable = true;
-#      nixlang.enable = true;
-#      rust.enable = true;
-#      gaming = {
-#        steam.enable = true;
-#      };
-#      openvpn.enable = true;
+      #      neovim.enable = true;
+      #      media.enable = true;
+      #      dotfiles.enable = true;
+      #      firefox.enable = true;
+      #      discord.enable = true;
+      #      nixlang.enable = true;
+      #      rust.enable = true;
+      gaming = {
+        steam.enable = true;
+      };
+      #      openvpn.enable = true;
       # jellyfin -- needs modules/nixos/jellyfin/default.nix
-      imports = [
-	./configuration.nix
-      ];
-
-
+      imports = [ ./configuration.nix ];
     }
   ];
 }

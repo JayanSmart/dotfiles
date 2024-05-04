@@ -25,7 +25,7 @@
     configurationLimit = 5;
   };
 
-  networking.hostName = "mixos"; # Define your hostname.
+  #  networking.hostName = "mixos"; # Define your hostname.
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -34,7 +34,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  #  networking.networkmanager.enable = true;
 
   services.openvpn.servers = {
     nordVPN = {
@@ -135,18 +135,17 @@
     jellyfin-ffmpeg
     openvpn
     htop
-    plex
   ];
 
   #################################
   # Games and game related config #
   #################################
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
+  #programs.steam = {
+  #  enable = true;
+  #  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  #  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  #};
 
   #################################
   # Jellyfin                      #
