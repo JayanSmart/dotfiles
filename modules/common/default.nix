@@ -8,6 +8,7 @@
 
   imports = [
     ./shell
+    ./neovim
   ];
 
   options = {
@@ -43,7 +44,7 @@
       colors = lib.mkOption {
         type = lib.types.attrs;
         description = "Base16 color scheme";
-        default = ( import ../colorscheme/gruvbox).dark;
+        default = (import ../colorscheme/gruvbox).dark;
       };
       dark = lib.mkOption {
         type = lib.types.bool;
@@ -70,10 +71,11 @@
     };
   };
 
-  config = 
+  config =
     let
       stateVersion = "23.11";
-    in {
+    in
+    {
       # Basic system packaged wanted for all devices
       environment.systemPackages = with pkgs; [
         git

@@ -33,13 +33,12 @@ inputs.nixpkgs.lib.nixosSystem {
       };
 
       # Programs and services
-      #      neovim.enable = true;
+      neovim.enable = true;
       #      media.enable = true;
       #      dotfiles.enable = true;
       #      firefox.enable = true;
       #      discord.enable = true;
-      #      nixlang.enable = true;
-      #      rust.enable = true;
+      # rust.enable = true;
       gaming = {
         steam.enable = true;
       };
