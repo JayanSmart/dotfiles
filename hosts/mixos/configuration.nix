@@ -10,12 +10,7 @@
     ./hardware-configuration.nix
   ];
 
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
+  nix.settings = { experimental-features = [ "nix-command" "flakes" ]; };
 
   # Bootloader.
   boot.loader.grub = {
@@ -35,12 +30,6 @@
 
   # Enable networking
   #  networking.networkmanager.enable = true;
-
-  services.openvpn.servers = {
-    nordVPN = {
-      config = ''config /root/jayan/openvpn/nordvpn.conf '';
-    };
-  };
 
   # Set your time zone.
   time.timeZone = "Europe/London";
@@ -105,10 +94,7 @@
   users.users.jayan = {
     isNormalUser = true;
     description = "Jayan Smaart";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
       kate

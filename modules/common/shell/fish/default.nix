@@ -9,5 +9,9 @@
     home.packages = with pkgs; [ curl ];
 
     programs.fish = { enable = true; };
+
+    home.sessionVariables.fish_greeting = "";
+
+    programs.fzf.enableFishIntegration = true;
   };
 }
