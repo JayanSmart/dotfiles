@@ -7,6 +7,7 @@
 {
 
   imports = [
+    ./applications
     ./shell
     ./neovim
   ];
@@ -95,8 +96,8 @@
       # Retrieves package object based on string name
       nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.unfreePackages;
 
-      # Pin a state version to prevent warnings
-      home-manager.users.${config.user}.home.stateVersion = stateVersion;
-      home-manager.users.root.home.stateVersion = stateVersion;
-    };
+    # Pin a state version to prevent warnings
+    home-manager.users.${config.user}.home.stateVersion = stateVersion;
+    home-manager.users.root.home.stateVersion = stateVersion;
+  };
 }

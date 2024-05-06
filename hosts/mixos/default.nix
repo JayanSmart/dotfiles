@@ -1,12 +1,7 @@
 # MixOS Config
 # Base system configuration for desktop linux
 
-{
-  inputs,
-  globals,
-  overlays,
-  ...
-}:
+{ inputs, globals, overlays, ... }:
 
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
@@ -34,14 +29,12 @@ inputs.nixpkgs.lib.nixosSystem {
 
       # Programs and services
       neovim.enable = true;
-      #      media.enable = true;
+      media.enable = true;
       #      dotfiles.enable = true;
-      #      firefox.enable = true;
-      #      discord.enable = true;
+      firefox.enable = true;
+      discord.enable = true;
       # rust.enable = true;
-      gaming = {
-        steam.enable = true;
-      };
+      gaming = { steam.enable = true; };
       #      openvpn.enable = true;
       # jellyfin -- needs modules/nixos/jellyfin/default.nix
       imports = [ ./configuration.nix ];

@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-{
+{ config, pkgs, lib, ... }: {
 
   options = {
     discord = {
@@ -23,9 +17,9 @@
         {
           "BACKGROUND_COLOR": "#202225",
           "IS_MAXIMIZED": false,
-          "IS_MINIMIZED": false,
-          "OPEN_ON_STARTUP": false,
-          "MINIMIZE_TO_TRAY": false,
+          "IS_MINIMIZED": true,
+          "OPEN_ON_STARTUP": true,
+          "MINIMIZE_TO_TRAY": true,
           "SKIP_HOST_UPDATE": true
         }
       '';
