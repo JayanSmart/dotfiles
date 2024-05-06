@@ -7,7 +7,8 @@
     # Used for user packages and dotfiles
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
-      inputs.nixpkgs.follows = "nixpkgs"; # Use system packages list for their inputs
+      inputs.nixpkgs.follows =
+        "nixpkgs"; # Use system packages list for their inputs
     };
 
     nix2vim = {
@@ -116,8 +117,7 @@
     };
   };
 
-  outputs =
-    { nixpkgs, ... }@inputs:
+  outputs = { nixpkgs, ... }@inputs:
     let
 
       globals = rec {
@@ -137,8 +137,7 @@
       supportedSystems = [ "x86_64-linux" ];
 
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-    in
-    rec {
+    in rec {
 
       # List of all sytems this config maintains
       # Primary personal machine: nixos-rebuild switch --flake .#mixos
@@ -147,60 +146,37 @@
       };
 
       homeConfigurations = {
-        mixos = nixosConfigurations.mixos.config.home-manager.users.${globals.user}.home;
+        mixos =
+          nixosConfigurations.mixos.config.home-manager.users.${globals.user}.home;
       };
 
-      packages =
-        let
-          neovim =
-            system:
-            let
-              pkgs = import nixpkgs { inherit system overlays; };
-            in
-            import ./modules/common/neovim/package {
-              inherit pkgs;
-              colors = (import ./colorscheme/gruvbox-dark).dark;
-            };
-        in
-        {
-          x86_64-linux.neovim = neovim "x86_64-linux";
-        };
+      packages = let
+        neovim = system:
+          let pkgs = import nixpkgs { inherit system overlays; };
+          in import ./modules/common/neovim/package {
+            inherit pkgs;
+            colors = (import ./colorscheme/gruvbox-dark).dark;
+          };
+      in { x86_64-linux.neovim = neovim "x86_64-linux"; };
 
-      apps = forAllSystems (
-        system:
-        let
-          pkgs = import nixpkgs { inherit system overlays; };
-        in
-        import ./apps { inherit pkgs; }
-      );
+      apps = forAllSystems (system:
+        let pkgs = import nixpkgs { inherit system overlays; };
+        in import ./apps { inherit pkgs; });
 
-      formatter = forAllSystems (
-        system:
-        let
-          pkgs = import nixpkgs { inherit system overlays; };
-        in
-        pkgs.nixfmt
-      );
+      formatter = forAllSystems (system:
+        let pkgs = import nixpkgs { inherit system overlays; };
+        in pkgs.nixfmt);
 
       # Development Environments
-      devShells = forAllSystems (
-        system:
-        let
-          pkgs = import nixpkgs { inherit system overlays; };
-        in
-        {
+      devShells = forAllSystems (system:
+        let pkgs = import nixpkgs { inherit system overlays; };
+        in {
 
           #Used to run commands and edit files in this repo
           default = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              git
-              stylua
-              nixfmt
-              shellcheck
-            ];
+            buildInputs = with pkgs; [ git stylua nixfmt shellcheck ];
           };
-        }
-      );
+        });
 
       #Templates for starting new projects quickly
       templates = rec {
