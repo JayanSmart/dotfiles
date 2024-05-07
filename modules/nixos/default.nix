@@ -4,7 +4,7 @@
     #    ./applications
     ./gaming
     ./graphical
-    #    ./hardware
+    ./hardware
     #    ./services
     #    ./system
   ];

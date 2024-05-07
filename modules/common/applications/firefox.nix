@@ -37,7 +37,7 @@
             facebook-container
             ghostery
             markdownload
-            nordvpn-proxy-extension
+            #nordvpn-proxy-extension
             reddit-enhancement-suite
             return-youtube-dislikes
             sponsorblock
@@ -46,6 +46,7 @@
           ];
           settings = {
             "app.update.auto" = false;
+            "browser.bookmarks.addedImportButton" = false;
             "browser.aboutConfig.showWarning" = false;
             "browser.warnOnQuit" = false;
             "browser.quitShortcut.disabled" =
@@ -62,7 +63,10 @@
             "general.autoScroll" = true; # Drag middle-mouse to scroll
             "services.sync.prefs.sync.general.autoScroll" =
               false; # Prevent disabling autoscroll
+            "services.sync.username" = "jayandrinsmart@gmail.com";
+            "signon.rememberSignons" = false;
             "extensions.pocket.enabled" = false;
+            "extensions.autoDisable" = 0;
             #"toolkit.legacyUserProfileCustomizations.stylesheets" = true; # Allow userChrome.css
             #"layout.css.color-mix.enabled" = true;
             "ui.systemUsesDarkTheme" = true;
