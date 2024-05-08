@@ -13,6 +13,8 @@ inputs.nixpkgs.lib.nixosSystem {
     {
       nixpkgs.overlays = overlays;
 
+      nix.settings = { experimental-features = [ "nix-command" "flakes" ]; };
+
       networking = {
         hostName = "mixos";
         #  wireless.enable = true; # Enables wireless support via wpa_supplicant.
@@ -37,7 +39,22 @@ inputs.nixpkgs.lib.nixosSystem {
       gaming = { steam.enable = true; };
       #      openvpn.enable = true;
       # jellyfin -- needs modules/nixos/jellyfin/default.nix
-      imports = [ ./configuration.nix ];
+      imports = [ ./hardware-configuration.nix ];
+
+      boot.loader.grub = {
+        enable = true;
+        device = "/dev/nvme0n1";
+        useOSProber = true;
+        configurationLimit = 5;
+      };
+
+      # Define a user account. Don't forget to set a password with ‘passwd’.
+      users.users.jayan = {
+        isNormalUser = true;
+        description = "Jayan Smaart";
+        extraGroups = [ "networkmanager" "wheel" ];
+      };
+
     }
   ];
 }

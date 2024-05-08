@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./openrgb.nix ]; }
+{ ... }: { imports = [ ./openrgb.nix ./sound.nix ./graphics.nix ]; }

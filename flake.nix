@@ -11,6 +11,9 @@
         "nixpkgs"; # Use system packages list for their inputs
     };
 
+    # Community packages for Firefox plugins
+    nur.url = "github:nix-community/nur";
+
     nix2vim = {
       url = "github:gytis-ivaskevicius/nix2vim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -115,6 +118,24 @@
       url = "github:neovim/tree-sitter-vimdoc";
       flake = false;
     };
+
+    # Ren and rep - CLI find and replace
+    rep = {
+      url = "github:robenkleene/rep-grep";
+      flake = false;
+    };
+    ren = {
+      url = "github:robenkleene/ren-find";
+      flake = false;
+    };
+
+    # Firefox addon from outside the extension store
+    bypass-paywalls-clean = {
+      # https://gitlab.com/magnolia1234/bpc-uploads/-/commits/master/?ref_type=HEADS
+      url =
+        "https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass_paywalls_clean-3.6.6.0.xpi";
+      flake = false;
+    };
   };
 
   outputs = { nixpkgs, ... }@inputs:
@@ -129,15 +150,23 @@
 
       # Overlays to use once I understand what these are
       overlays = [
+        inputs.nur.overlay
         inputs.nix2vim.overlay
         (import ./overlays/neovim-plugins.nix inputs)
         (import ./overlays/tree-sitter.nix inputs)
+        (import ./overlays/bypass-paywalls-clean.nix inputs)
+        (import ./overlays/ren-rep.nix inputs)
       ];
 
       supportedSystems = [ "x86_64-linux" ];
 
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in rec {
+      # Remove warnings
+      system.StateVersion = 23.11;
+
+      # Allow unfree packages
+      nixpkgs.config.allowUnfree = true;
 
       # List of all sytems this config maintains
       # Primary personal machine: nixos-rebuild switch --flake .#mixos

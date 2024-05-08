@@ -1,16 +1,6 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-{
+{ config, lib, pkgs, ... }: {
 
-  imports = [
-    ./applications
-    ./shell
-    ./neovim
-  ];
+  imports = [ ./applications ./shell ./neovim ];
 
   options = {
     user = lib.mkOption {
@@ -26,7 +16,8 @@
       download = lib.mkOption {
         type = lib.types.str;
         description = "XDG directory for downloads";
-        default = if pkgs.stdenv.isDarwin then "$HOME/Downloads" else "$HOME/downloads";
+        default =
+          if pkgs.stdenv.isDarwin then "$HOME/Downloads" else "$HOME/downloads";
       };
     };
     identityFile = lib.mkOption {
@@ -56,9 +47,10 @@
     homePath = lib.mkOption {
       type = lib.types.path;
       description = "Path of user's home directory.";
-      default = builtins.toPath (
-        if pkgs.stdenv.isDarwin then "/Users/${config.user}" else "/home/${config.user}"
-      );
+      default = builtins.toPath (if pkgs.stdenv.isDarwin then
+        "/Users/${config.user}"
+      else
+        "/home/${config.user}");
     };
     dotfilesPath = lib.mkOption {
       type = lib.types.path;
@@ -72,29 +64,22 @@
     };
   };
 
-  config =
-    let
-      stateVersion = "23.11";
-    in
-    {
-      # Basic system packaged wanted for all devices
-      environment.systemPackages = with pkgs; [
-        git
-        vim
-        wget
-        curl
-      ];
+  config = let stateVersion = "23.11";
+  in {
+    # Basic system packaged wanted for all devices
+    environment.systemPackages = with pkgs; [ git vim wget curl ];
 
-      # Use the system-level nixpkgs instead of Home Manager's
-      home-manager.useGlobalPkgs = true;
+    # Use the system-level nixpkgs instead of Home Manager's
+    home-manager.useGlobalPkgs = true;
 
-      # Install packages to /etc/profiles instead of ~/.nix-profile, useful when
-      # using multiple profiles for one user
-      home-manager.useUserPackages = true;
+    # Install packages to /etc/profiles instead of ~/.nix-profile, useful when
+    # using multiple profiles for one user
+    home-manager.useUserPackages = true;
 
-      # Allow specified unfree packages (identified elsewhere)
-      # Retrieves package object based on string name
-      nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.unfreePackages;
+    # Allow specified unfree packages (identified elsewhere)
+    # Retrieves package object based on string name
+    nixpkgs.config.allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) config.unfreePackages;
 
     # Pin a state version to prevent warnings
     home-manager.users.${config.user}.home.stateVersion = stateVersion;
