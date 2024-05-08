@@ -39,7 +39,8 @@ inputs.nixpkgs.lib.nixosSystem {
       # rust.enable = true;
       gaming = { steam.enable = true; };
       #      openvpn.enable = true;
-      # jellyfin -- needs modules/nixos/jellyfin/default.nix
+
+      services = { jellyfin.enable = true; };
       imports = [ ./hardware-configuration.nix ];
 
       boot.loader.grub = {
