@@ -12,6 +12,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/nixos
     {
       nixpkgs.overlays = overlays;
+      system.stateVersion = "23.11";
 
       nix.settings = { experimental-features = [ "nix-command" "flakes" ]; };
 
