@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-{
+{ config, pkgs, lib, ... }: {
 
   config = lib.mkIf config.gui.enable {
 
@@ -30,9 +24,10 @@
       };
     };
 
-    environment.systemPackages = with pkgs; [
-      xclip # Clipboard
-    ];
+    environment.systemPackages = with pkgs;
+      [
+        xclip # Clipboard
+      ];
 
     home-manager.users.${config.user} = {
 

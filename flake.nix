@@ -162,6 +162,7 @@
         (import ./overlays/tree-sitter.nix inputs)
         (import ./overlays/bypass-paywalls-clean.nix inputs)
         (import ./overlays/ren-rep.nix inputs)
+        (import ./overlays/betterlockscreen.nix)
       ];
 
       supportedSystems = [ "x86_64-linux" ];
