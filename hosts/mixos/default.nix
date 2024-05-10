@@ -30,11 +30,15 @@ inputs.nixpkgs.lib.nixosSystem {
         dark = true;
       };
 
+      wallpaper = "${inputs.wallpapers}/gruvbox/road.jpg";
+      gtk.theme.name = inputs.nixpkgs.lib.mkDefault "Adwaita-dark";
+
       # Programs and services
       neovim.enable = true;
       # media.enable = true;
       #      dotfiles.enable = true;
       firefox.enable = true;
+      kitty.enable = true;
       discord.enable = true;
       # rust.enable = true;
       gaming = { steam.enable = true; };
@@ -53,12 +57,12 @@ inputs.nixpkgs.lib.nixosSystem {
       # Define a user account. Don't forget to set a password with ‘passwd’.
       users.users.jayan = {
         isNormalUser = true;
-        description = "Jayan Smaart";
+        description = "Jayan Smart";
         extraGroups = [ "networkmanager" "wheel" ];
       };
       # Enable automatic login for the user.
-      services.xserver.displayManager.autoLogin.enable = true;
-      services.xserver.displayManager.autoLogin.user = "jayan";
+      # services.xserver.displayManager.autoLogin.enable = true;
+      # services.xserver.displayManager.autoLogin.user = "jayan";
 
     }
   ];

@@ -14,6 +14,12 @@
     # Community packages for Firefox plugins
     nur.url = "github:nix-community/nur";
 
+    # Wallpapers
+    wallpapers = {
+      url = "gitlab:exorcist365/wallpapers";
+      flake = false;
+    };
+
     nix2vim = {
       url = "github:gytis-ivaskevicius/nix2vim";
       inputs.nixpkgs.follows = "nixpkgs";

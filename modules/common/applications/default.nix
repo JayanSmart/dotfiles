@@ -1,4 +1,4 @@
 { ... }: {
 
-  imports = [ ./discord.nix ./firefox.nix ];
+  imports = [ ./discord.nix ./firefox.nix ./kitty.nix ];
 }
