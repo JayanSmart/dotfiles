@@ -39,8 +39,10 @@ in {
           assigns = {
             "${ws1}" = [{ class = "Firefox"; }];
             "${ws2}" = [
-              { class = "kitty"; }
-              { class = "aerc"; }
+              {
+                class = "kitty";
+              }
+              # { class = "aerc"; }
               { class = "obsidian"; }
             ];
             "${ws3}" = [{ class = "discord"; }];

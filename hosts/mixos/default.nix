@@ -40,7 +40,10 @@ inputs.nixpkgs.lib.nixosSystem {
       firefox.enable = true;
       kitty.enable = true;
       discord.enable = true;
-      # rust.enable = true;
+
+      # Programming lanuages installed as default
+      rust.enable = true;
+
       gaming = { steam.enable = true; };
       #      openvpn.enable = true;
 
@@ -60,10 +63,24 @@ inputs.nixpkgs.lib.nixosSystem {
         description = "Jayan Smart";
         extraGroups = [ "networkmanager" "wheel" ];
       };
-      # Enable automatic login for the user.
-      # services.xserver.displayManager.autoLogin.enable = true;
-      # services.xserver.displayManager.autoLogin.user = "jayan";
 
+      # Set your time zone.
+      time.timeZone = "Europe/London";
+
+      # Select internationalisation properties.
+      i18n.defaultLocale = "en_GB.UTF-8";
+
+      i18n.extraLocaleSettings = {
+        LC_ADDRESS = "en_GB.UTF-8";
+        LC_IDENTIFICATION = "en_GB.UTF-8";
+        LC_MEASUREMENT = "en_GB.UTF-8";
+        LC_MONETARY = "en_GB.UTF-8";
+        LC_NAME = "en_GB.UTF-8";
+        LC_NUMERIC = "en_GB.UTF-8";
+        LC_PAPER = "en_GB.UTF-8";
+        LC_TELEPHONE = "en_GB.UTF-8";
+        LC_TIME = "en_GB.UTF-8";
+      };
     }
   ];
 }

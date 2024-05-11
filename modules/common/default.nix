@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }: {
 
-  imports = [ ./applications ./shell ./neovim ];
+  imports = [ ./applications ./shell ./neovim ./programming ];
 
   options = {
     user = lib.mkOption {
