@@ -26,7 +26,7 @@ inputs.nixpkgs.lib.nixosSystem {
       gui.enable = true;
 
       theme = {
-        colors = (import ../../colorscheme/gruvbox-dark).dark;
+        colors = (import ../../colorscheme/everforest).dark;
         dark = true;
       };
 
@@ -35,7 +35,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
       # Programs and services
       neovim.enable = true;
-      # media.enable = true;
+      media.enable = true;
       #      dotfiles.enable = true;
       firefox.enable = true;
       kitty.enable = true;
