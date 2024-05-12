@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
 
   imports = [
-    #    ./applications
+    ./applications
     ./gaming
     ./graphical
     ./hardware
