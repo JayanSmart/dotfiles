@@ -133,5 +133,7 @@
     home.sessionVariables.fish_greeting = "";
 
     programs.fzf.enableFishIntegration = true;
+    programs.zoxide.enableFishIntegration = true;
+    programs.starship.enableFishIntegration = true;
   };
 }

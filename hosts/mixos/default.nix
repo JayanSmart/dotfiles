@@ -26,7 +26,7 @@ inputs.nixpkgs.lib.nixosSystem {
       gui.enable = true;
 
       theme = {
-        colors = (import ../../colorscheme/everforest).dark;
+        colors = (import ../../colorscheme/nord).dark;
         dark = true;
       };
 
@@ -36,10 +36,11 @@ inputs.nixpkgs.lib.nixosSystem {
       # Programs and services
       neovim.enable = true;
       media.enable = true;
-      #      dotfiles.enable = true;
       firefox.enable = true;
       kitty.enable = true;
       discord.enable = true;
+      calibre.enable = true;
+      nautilus.enable = true;
 
       # Programming lanuages installed as default
       rust.enable = true;
@@ -57,6 +58,7 @@ inputs.nixpkgs.lib.nixosSystem {
         configurationLimit = 5;
       };
 
+      #########################
       # Define a user account. Don't forget to set a password with ‘passwd’.
       users.users.jayan = {
         isNormalUser = true;

@@ -2,11 +2,13 @@
   imports = [
     ./bash
     ./fish
-    ./git.nix
-    ./zsh.nix
     ./fzf.nix
-    # ./github.nix
-    # ./nixpkgs.nix
+    ./git.nix
+    ./github.nix
+    ./jujutsu.nix
+    ./nixpkgs.nix
+    ./starship.nix
+    ./zsh.nix
     ./utilities.nix
   ];
 }

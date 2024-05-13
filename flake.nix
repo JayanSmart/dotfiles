@@ -163,6 +163,7 @@
         (import ./overlays/bypass-paywalls-clean.nix inputs)
         (import ./overlays/ren-rep.nix inputs)
         (import ./overlays/betterlockscreen.nix)
+        (import ./overlays/gh-collaborators.nix)
         # (import ./overlays/mpv-scripts.nix inputs)
       ];
 
