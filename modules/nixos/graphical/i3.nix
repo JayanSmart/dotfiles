@@ -37,7 +37,7 @@ in {
         in {
           modifier = modifier;
           assigns = {
-            "${ws1}" = [{ class = "Firefox"; }];
+            "${ws1}" = [{ class = "firefox"; }];
             "${ws2}" = [
               {
                 class = "kitty";

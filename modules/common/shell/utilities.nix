@@ -45,7 +45,11 @@ in {
         duf # Basic disk information (df)
       ];
 
-      programs.zoxide.enable = true; # Shortcut jump command
+      programs.zoxide = {
+        enable = true; # Shortcut jump command
+        enableFishIntegration = true;
+        options = [ "--cmd cd" ];
+      };
 
       home.file = {
         ".rgignore".text = ignorePatterns;
