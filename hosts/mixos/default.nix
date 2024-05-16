@@ -37,7 +37,6 @@ inputs.nixpkgs.lib.nixosSystem {
       neovim.enable = true;
       media.enable = true;
       firefox.enable = true;
-      alacritty.enable = true;
       kitty.enable = true;
       discord.enable = true;
       calibre.enable = true;
