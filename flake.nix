@@ -195,7 +195,10 @@
             inherit pkgs;
             colors = (import ./colorscheme/gruvbox-dark).dark;
           };
-      in { x86_64-linux.neovim = neovim "x86_64-linux"; };
+      in { 
+        x86_64-linux.neovim = neovim "x86_64-linux";
+        aarch64-darwin.neovim = neovim "aarch64-darwin";
+       };
 
       apps = forAllSystems (system:
         let pkgs = import nixpkgs { inherit system overlays; };
