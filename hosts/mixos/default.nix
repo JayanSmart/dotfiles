@@ -48,7 +48,10 @@ inputs.nixpkgs.lib.nixosSystem {
       gaming = { steam.enable = true; };
       #      openvpn.enable = true;
 
-      services = { jellyfin.enable = true; };
+      services = {
+        jellyfin.enable = true;
+        tailscale.enable = true;
+      };
       imports = [ ./hardware-configuration.nix ];
 
       boot.loader.grub = {
