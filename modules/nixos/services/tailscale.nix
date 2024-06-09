@@ -1,5 +1,11 @@
-{ config, lib, ... }: {
+{ config, pkgs, lib, ... }: {
 
-  config =
-    lib.mkIf config.services.tailscale.enable { services.tailscale = { }; };
+  config = lib.mkIf config.services.tailscale.enable {
+    services.tailscale = {
+      openFirewall = true;
+      authKeyFile = config.tailscale_auth_file;
+      extraUpFlags = [ ];
+    };
+  };
+
 }
