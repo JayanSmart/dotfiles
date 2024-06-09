@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./jellyfin.nix ]; }
+{ ... }: { imports = [ ./jellyfin.nix ./tailscale.nix ]; }
