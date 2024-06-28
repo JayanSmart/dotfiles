@@ -21,7 +21,6 @@ inputs.nixpkgs.lib.nixosSystem {
         #  wireless.enable = true; # Enables wireless support via wpa_supplicant.
         networkmanager.enable = true;
       };
-      tailscale_secrets_file = "./secrets/tailscale_auth.secret";
 
       # Theming
       gui.enable = true;
