@@ -1,0 +1,3 @@
+# Scan hosts: ssh-keyscan -t ed25519 <hostnames>
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGWfMnzJmYHEkd3dO4Pt1Ed+Pkn7rLP7wVHCua/7V9cA mixos

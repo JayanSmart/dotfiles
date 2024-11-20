@@ -34,25 +34,25 @@ inputs.nixpkgs.lib.nixosSystem {
       gtk.theme.name = inputs.nixpkgs.lib.mkDefault "Adwaita-dark";
 
       # Programs and services
-      neovim.enable = true;
-      media.enable = true;
+      calibre.enable = true;
+      discord.enable = true;
       firefox.enable = true;
       kitty.enable = true;
-      discord.enable = true;
-      calibre.enable = true;
+      media.enable = true;
       nautilus.enable = true;
-
-      # Programming lanuages installed as default
+      neovim.enable = true;
       rust.enable = false;
 
       gaming = { steam.enable = true; };
-      #      openvpn.enable = true;
 
       services = {
-        jellyfin.enable = true;
-        tailscale.enable = true;
-        udisks2.enable = true;
         devmon.enable = true;
+        jellyfin.enable = true;
+        udisks2.enable = true;
+        tailscale = {
+          enable = true;
+          credentialsFile = ../../private/tailscale.age;
+        };
       };
 
       imports = [ ./hardware-configuration.nix ];
