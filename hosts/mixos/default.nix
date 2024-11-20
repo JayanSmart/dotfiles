@@ -43,7 +43,7 @@ inputs.nixpkgs.lib.nixosSystem {
       nautilus.enable = true;
 
       # Programming lanuages installed as default
-      rust.enable = true;
+      rust.enable = false;
 
       gaming = { steam.enable = true; };
       #      openvpn.enable = true;
@@ -51,6 +51,8 @@ inputs.nixpkgs.lib.nixosSystem {
       services = {
         jellyfin.enable = true;
         tailscale.enable = true;
+        udisks2.enable = true;
+        devmon.enable = true;
       };
 
       imports = [ ./hardware-configuration.nix ];

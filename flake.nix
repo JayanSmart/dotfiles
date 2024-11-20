@@ -139,7 +139,7 @@
     bypass-paywalls-clean = {
       # https://gitlab.com/magnolia1234/bpc-uploads/-/commits/master/?ref_type=HEADS
       url =
-        "https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass_paywalls_clean-3.7.2.0.xpi";
+        "https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass_paywalls_clean-3.7.4.0.xpi";
       flake = false;
     };
   };
@@ -229,6 +229,10 @@
         rust = {
           path = ./templates/rust;
           description = "Rust template";
+        };
+        python = {
+          path = ./templates/python;
+          description = "Python template";
         };
       };
     };
