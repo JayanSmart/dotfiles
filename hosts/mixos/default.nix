@@ -49,10 +49,11 @@ inputs.nixpkgs.lib.nixosSystem {
         devmon.enable = true;
         jellyfin.enable = true;
         udisks2.enable = true;
-        tailscale = {
-          enable = true;
-          credentialsFile = ../../private/tailscale.age;
-        };
+      };
+
+      tailscale = {
+        enable = true;
+        credentialsFile = ../../private/tailscale.age;
       };
 
       imports = [ ./hardware-configuration.nix ];

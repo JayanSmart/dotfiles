@@ -9,19 +9,20 @@
   };
 
   config = lib.mkIf config.services.tailscale.enable {
-    services.tailscale = {
-      openFirewall = true;
-      authKeyFile = ./tailscale_auth.secret;
-      extraUpFlags = [ "--ssh" ];
-    };
 
-    # Create credentials file for Cloudflare
+    # Create credentials file for Tailscale
     secrets.tailscale = {
       source = config.tailscale.credentialsFile;
       dest = "${config.secretsDirectory}/tailscale";
       owner = "jayan";
       group = "users";
       permissions = "0440";
+    };
+
+    services.tailscale = {
+      openFirewall = true;
+      authKeyFile = "${config.secrets.tailscale.dest}";
+      extraUpFlags = [ "--ssh" ];
     };
 
   };
