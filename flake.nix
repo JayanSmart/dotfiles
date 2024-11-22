@@ -2,8 +2,12 @@
   description = "My nixos base configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
+    # Used for system packages
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+
+    # Used for specific stable packages
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     # Used for user packages and dotfiles
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";

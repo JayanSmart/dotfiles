@@ -14,6 +14,8 @@ inputs.nixpkgs.lib.nixosSystem {
       nixpkgs.overlays = overlays;
       system.stateVersion = "23.11";
 
+      nixpkgs.config.permittedInsecurePackages = [ "jujutsu-0.17.1" ];
+
       nix.settings = { experimental-features = [ "nix-command" "flakes" ]; };
 
       networking = {

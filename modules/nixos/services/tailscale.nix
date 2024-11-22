@@ -8,23 +8,24 @@
     };
   };
 
-  config = lib.mkIf config.services.tailscale.enable {
+  # a = builtins.break config.tailscale.enable;
 
-    # Create credentials file for Tailscale
-    secrets.tailscale = {
-      source = config.tailscale.credentialsFile;
-      dest = "${config.secretsDirectory}/tailscale";
-      owner = "jayan";
-      group = "users";
-      permissions = "0440";
-    };
+  config = lib.mkIf config.tailscale.enable {
 
     services.tailscale = {
+      enable = true;
       openFirewall = true;
-      authKeyFile = "${config.secrets.tailscale.dest}";
+      authKeyFile = "${config.secrets.tailscaled.dest}";
       extraUpFlags = [ "--ssh" ];
     };
 
+    # Create credentials file for Tailscale
+    secrets.tailscaled = {
+      source = config.tailscale.credentialsFile;
+      dest = "${config.secretsDirectory}/tailscaled";
+      owner = "tailscaled";
+      group = "tailscaled";
+      permissions = "0440";
+    };
   };
-
 }
