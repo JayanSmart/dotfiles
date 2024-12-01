@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   no-rgb = pkgs.writeScriptBin "no-rgb" ''
     #!/bin/sh
@@ -7,8 +7,13 @@ let
     for i in $(seq 0 $(($NUM_DEVICES - 1))); do
       ${pkgs.openrgb}/bin/openrgb --noautoconnect --device $i --mode static --color 000000
     done
+
+    for i in $(seq 0 $(($NUM_DEVICES - 1))); do
+      ${pkgs.openrgb}/bin/openrgb --noautoconnect --device $i --mode off
+    done
   '';
-in {
+in
+{
   config = {
     services.udev.packages = [ pkgs.openrgb ];
     boot.kernelModules = [ "i2c-dev" ];

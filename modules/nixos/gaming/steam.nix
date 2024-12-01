@@ -4,7 +4,8 @@
 
   config = lib.mkIf (config.gaming.steam.enable && pkgs.stdenv.isLinux) {
     hardware.steam-hardware.enable = true;
-    unfreePackages = [ "steam" "steam-original" "steamcmd" "steam-run" ];
+    unfreePackages =
+      [ "steam" "steam-original" "steamcmd" "steam-run" "steam-unwrapped" ];
 
     programs.steam = {
       enable = true;

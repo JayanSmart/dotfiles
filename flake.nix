@@ -3,14 +3,15 @@
 
   inputs = {
 
-    # Used for system packages
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    # Used f:or system packages
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Used for specific stable packages
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+
     # Used for user packages and dotfiles
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows =
         "nixpkgs"; # Use system packages list for their inputs
     };
@@ -36,7 +37,7 @@
     };
     nvim-lspconfig-src = {
       # https://github.com/neovim/nvim-lspconfig/tags
-      url = "github:neovim/nvim-lspconfig/v0.1.7";
+      url = "github:neovim/nvim-lspconfig/v0.1.8";
       flake = false;
     };
     cmp-nvim-lsp-src = {
@@ -49,18 +50,18 @@
       flake = false;
     };
     comment-nvim-src = {
-      # https://github.com/numToStr/Comment.nvim/releases
+      # https://github.com/numToStr/Comment.nvim/relnixeases
       url = "github:numToStr/Comment.nvim/v0.8.0";
       flake = false;
     };
     nvim-treesitter-src = {
       # https://github.com/nvim-treesitter/nvim-treesitter/tags
-      url = "github:nvim-treesitter/nvim-treesitter/master";
+      url = "github:nvim-treesitter/nvim-treesitter/v0.9.2";
       flake = false;
     };
     telescope-nvim-src = {
       # https://github.com/nvim-telescope/telescope.nvim/releases
-      url = "github:nvim-telescope/telescope.nvim/0.1.5";
+      url = "github:nvim-telescope/telescope.nvim/0.1.8";
       flake = false;
     };
     telescope-project-nvim-src = {
@@ -69,12 +70,12 @@
     };
     toggleterm-nvim-src = {
       # https://github.com/akinsho/toggleterm.nvim/tags
-      url = "github:akinsho/toggleterm.nvim/v2.9.0";
+      url = "github:akinsho/toggleterm.nvim/v2.12.0";
       flake = false;
     };
     bufferline-nvim-src = {
       # https://github.com/akinsho/bufferline.nvim/releases
-      url = "github:akinsho/bufferline.nvim/v4.5.0";
+      url = "github:akinsho/bufferline.nvim/v4.6.1";
       flake = false;
     };
     nvim-tree-lua-src = {
@@ -87,7 +88,7 @@
     };
     fidget-nvim-src = {
       # https://github.com/j-hui/fidget.nvim/tags
-      url = "github:j-hui/fidget.nvim/v1.2.0";
+      url = "github:j-hui/fidget.nvim/v1.4.5";
       flake = false;
     };
     kitty-scrollback-nvim-src = {
@@ -140,12 +141,11 @@
     };
 
     # Firefox addon from outside the extension store
-    bypass-paywalls-clean = {
-      # https://gitlab.com/magnolia1234/bpc-uploads/-/commits/master/?ref_type=HEADS
-      url =
-        "https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass_paywalls_clean-3.7.4.0.xpi";
-      flake = false;
-    };
+    # bypass-paywalls-clean = {
+    #   # https://gitlab.com/magnolia1234/bpc-uploads/-/commits/master/?ref_type=HEADS
+    #   url = "https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass_paywalls_clean-3.7.4.0.xpi";
+    #   flake = false;
+    # };
   };
 
   outputs = { nixpkgs, ... }@inputs:
@@ -164,7 +164,7 @@
         inputs.nix2vim.overlay
         (import ./overlays/neovim-plugins.nix inputs)
         (import ./overlays/tree-sitter.nix inputs)
-        (import ./overlays/bypass-paywalls-clean.nix inputs)
+        # (import ./overlays/bypass-paywalls-clean.nix inputs)
         (import ./overlays/ren-rep.nix inputs)
         (import ./overlays/betterlockscreen.nix)
         (import ./overlays/gh-collaborators.nix)

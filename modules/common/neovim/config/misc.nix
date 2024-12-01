@@ -10,14 +10,13 @@
     pkgs.vimPlugins.vim-eunuch # File manipulation commands
     pkgs.vimPlugins.vim-fugitive # Git commands
     pkgs.vimPlugins.vim-repeat # Better repeat using .
-    pkgs.vimPlugins.comment-nvim # Smart comment commands
+    pkgs.vimPlugins.vim-abolish # Keep capitalization in substitute (Subvert)
     pkgs.vimPlugins.glow-nvim # Markdown preview popup
     pkgs.vimPlugins.nvim-colorizer-lua # Hex color previews
     pkgs.vimPlugins.which-key-nvim # Keybind helper
   ];
 
   # Initialize some plugins
-  setup.Comment = { };
   setup.colorizer = {
     user_default_options = {
       names = false;
@@ -42,7 +41,6 @@
     scrolloff = 3; # Margin of lines to see while scrolling
     splitright = true; # Vertical splits on the right side
     splitbelow = true; # Horizontal splits on the bottom side
-    pastetoggle = "<F3>"; # Use F3 to enter raw paste mode
     clipboard = "unnamedplus"; # Uses system clipboard for yanking
     updatetime = 300; # Faster diagnostics
     mouse = "nv"; # Mouse interaction / scrolling

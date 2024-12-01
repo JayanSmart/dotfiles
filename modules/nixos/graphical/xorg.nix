@@ -1,13 +1,19 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
 
   config = lib.mkIf config.gui.enable {
+
+    # Enable touchpad
+    services.libinput.enable = true;
 
     # Enable the X11 windowing system.
     services.xserver = {
       enable = config.gui.enable;
-
-      # Enable touchpad support
-      libinput.enable = true;
 
       # Login screen
       displayManager = {
@@ -24,10 +30,9 @@
       };
     };
 
-    environment.systemPackages = with pkgs;
-      [
-        xclip # Clipboard
-      ];
+    environment.systemPackages = with pkgs; [
+      xclip # Clipboard
+    ];
 
     home-manager.users.${config.user} = {
 

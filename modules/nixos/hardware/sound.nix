@@ -1,4 +1,5 @@
 { ... }: {
+  # NOTE - THIS FILE IS NOT USED AND CAN LIKELY BE DELETED
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
