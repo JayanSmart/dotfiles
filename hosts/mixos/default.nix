@@ -43,8 +43,7 @@ inputs.nixpkgs.lib.nixosSystem {
       media.enable = true;
       nautilus.enable = true;
       neovim.enable = true;
-      rust.enable = false;
-
+      rust.enable = true;
       gaming = { steam.enable = true; };
 
       services = {

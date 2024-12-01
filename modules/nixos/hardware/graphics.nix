@@ -16,7 +16,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  hardware.opengl = { enable = true; };
+  hardware.graphics = { enable = true; };
 
   # Enable the KDE Plasma Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
@@ -24,8 +24,8 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "za";
-    xkbVariant = "";
+    xkb.layout = "za";
+    xkb.variant = "";
   };
 
   # Enable CUPS to print documents.

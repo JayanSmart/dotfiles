@@ -7,7 +7,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Used for specific stable packages
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     # Used for user packages and dotfiles
     home-manager = {
@@ -210,7 +210,7 @@
 
       formatter = forAllSystems (system:
         let pkgs = import nixpkgs { inherit system overlays; };
-        in pkgs.nixfmt);
+        in pkgs.nixfmt-rfc-style);
 
       # Development Environments
       devShells = forAllSystems (system:

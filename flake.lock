@@ -35,16 +35,16 @@
     "bufferline-nvim-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1706180994,
-        "narHash": "sha256-/iGzUDJaodkUyWpwim8UtwaRuarfu/Nk6wxVApk+QxY=",
+        "lastModified": 1716555412,
+        "narHash": "sha256-8PCkY1zrlMrPGnQOb7MjqDXNlkeX46jrT4ScIL+MOwM=",
         "owner": "akinsho",
         "repo": "bufferline.nvim",
-        "rev": "d6cb9b7cac52887bcac65f8698e67479553c0748",
+        "rev": "99337f63f0a3c3ab9519f3d1da7618ca4f91cffe",
         "type": "github"
       },
       "original": {
         "owner": "akinsho",
-        "ref": "v4.5.0",
+        "ref": "v4.6.1",
         "repo": "bufferline.nvim",
         "type": "github"
       }
@@ -208,16 +208,16 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1732749044,
-        "narHash": "sha256-T38FQOg0BV5M8FN1712fovzNakSOENEYs+CSkg31C9Y=",
+        "lastModified": 1732981179,
+        "narHash": "sha256-F7thesZPvAMSwjRu0K8uFshTk3ZZSNAsXTIFvXBT+34=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0c5b4ecbed5b155b705336aa96d878e55acd8685",
+        "rev": "62c435d93bf046a5396f3016472e8f7c8e2aed65",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-24.05",
+        "ref": "nixos-24.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -387,16 +387,16 @@
     "telescope-nvim-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1701167040,
-        "narHash": "sha256-H5RpyWMluE+Yxg7xFX43AZTVW+Yg70DF3FmEGXBUSNg=",
+        "lastModified": 1716532947,
+        "narHash": "sha256-e1ulhc4IIvUgpjKQrSqPY4WpXuez6wlxL6Min9U0o5Q=",
         "owner": "nvim-telescope",
         "repo": "telescope.nvim",
-        "rev": "d90956833d7c27e73c621a61f20b29fdb7122709",
+        "rev": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026",
         "type": "github"
       },
       "original": {
         "owner": "nvim-telescope",
-        "ref": "0.1.5",
+        "ref": "0.1.8",
         "repo": "telescope.nvim",
         "type": "github"
       }
