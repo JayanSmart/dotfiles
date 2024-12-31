@@ -49,6 +49,7 @@ inputs.nixpkgs.lib.nixosSystem {
       services = {
         devmon.enable = true;
         jellyfin.enable = true;
+        plex.enable = true;
         udisks2.enable = true;
       };
 

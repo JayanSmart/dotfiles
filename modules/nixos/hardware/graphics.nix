@@ -26,6 +26,7 @@
   services.xserver = {
     xkb.layout = "za";
     xkb.variant = "";
+    xkb.options = "ctrl:swap_lalt_lctl";
   };
 
   # Enable CUPS to print documents.
