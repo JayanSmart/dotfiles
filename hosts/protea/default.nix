@@ -24,6 +24,13 @@ inputs.nixpkgs.lib.nixosSystem rec {
       physical = true;
       networking.hostName = "protea";
 
+      nix.settings = {
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+      };
+
       boot.initrd.availableKernelModules = [
         "xhci_pci"
         "nvme"
