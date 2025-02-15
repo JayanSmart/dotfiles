@@ -70,7 +70,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
       tailscale = {
         enable = true;
-        credentialsFile = ../../private/tailscale.age;
+        credentialsFile = ../../private/tailscale_mixos.age;
       };
 
       imports = [ ./hardware-configuration.nix ];
