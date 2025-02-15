@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   neovim = import ./package {
@@ -6,7 +11,8 @@ let
     colors = config.theme.colors;
     github = true;
   };
-in {
+in
+{
 
   options.neovim.enable = lib.mkEnableOption "Neovim.";
 
@@ -29,7 +35,9 @@ in {
 
         # Create quick aliases for launching Neovim
         programs.fish = {
-          shellAliases = { vim = "nvim"; };
+          shellAliases = {
+            vim = "nvim";
+          };
           shellAbbrs = {
             v = lib.mkForce "nvim";
             vl = lib.mkForce "nvim -c 'normal! `0' -c 'bdelete 1'";
@@ -41,15 +49,17 @@ in {
         # Requires removing some of the ANSI escape codes that are sent to the
         # scrollback using sed and baleia, as well as removing several
         # unnecessary features.
-        programs.kitty.settings.scrollback_pager =
-          "${neovim}/bin/nvim --headless +'KittyScrollbackGenerateKittens' +'set nonumber' +'set norelativenumber' +'%print' +'quit!' 2>&1";
+        programs.kitty.settings.scrollback_pager = "${neovim}/bin/nvim --headless +'KittyScrollbackGenerateKittens' +'set nonumber' +'set norelativenumber' +'%print' +'quit!' 2>&1";
 
         # Create a desktop option for launching Neovim from a file manager
         # (Requires launching the terminal and then executing Neovim)
-        xdg.desktopEntries.nvim = lib.mkIf pkgs.stdenv.isLinux {
+        xdg.desktopEntries.nvim = lib.mkIf (pkgs.stdenv.isLinux && config.gui.enable) {
           name = "Neovim wrapper";
           exec = "kitty nvim %F";
-          mimeType = [ "text/plain" "text/markdown" ];
+          mimeType = [
+            "text/plain"
+            "text/markdown"
+          ];
         };
         xdg.mimeApps.defaultApplications = lib.mkIf pkgs.stdenv.isLinux {
           "text/plain" = [ "nvim.desktop" ];

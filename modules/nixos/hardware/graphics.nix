@@ -1,8 +1,12 @@
-{ config, ... }: {
+{ config, ... }:
+{
 
-  unfreePackages = [ "nvidia-x11" "nvidia-settings" ];
+  unfreePackages = [
+    "nvidia-x11"
+    "nvidia-settings"
+  ];
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
 
   # Enable Nvidia Proprietery Drivers
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -16,7 +20,9 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  hardware.graphics = { enable = true; };
+  hardware.graphics = {
+    enable = true;
+  };
 
   # Enable the KDE Plasma Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;

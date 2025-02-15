@@ -1,7 +1,12 @@
 # MixOS Config
 # Base system configuration for desktop linux
 
-{ inputs, globals, overlays, ... }:
+{
+  inputs,
+  globals,
+  overlays,
+  ...
+}:
 
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
@@ -16,7 +21,15 @@ inputs.nixpkgs.lib.nixosSystem {
 
       nixpkgs.config.permittedInsecurePackages = [ "jujutsu-0.17.1" ];
 
-      nix.settings = { experimental-features = [ "nix-command" "flakes" ]; };
+      nix.settings = {
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+      };
+
+      physical = true;
+      server = false;
 
       networking = {
         hostName = "mixos";
@@ -44,18 +57,20 @@ inputs.nixpkgs.lib.nixosSystem {
       nautilus.enable = true;
       neovim.enable = true;
       rust.enable = true;
-      gaming = { steam.enable = true; };
+      gaming = {
+        steam.enable = true;
+      };
 
       services = {
         devmon.enable = true;
-        jellyfin.enable = true;
-        plex.enable = true;
+        # jellyfin.enable = true;
+        # plex.enable = true;
         udisks2.enable = true;
       };
 
       tailscale = {
         enable = true;
-        credentialsFile = ../../private/tailscale.age;
+        credentialsFile = ../../private/tailscale_mixos.age;
       };
 
       imports = [ ./hardware-configuration.nix ];
@@ -72,7 +87,10 @@ inputs.nixpkgs.lib.nixosSystem {
       users.users.jayan = {
         isNormalUser = true;
         description = "Jayan Smart";
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+        ];
       };
 
       # Set your time zone.
