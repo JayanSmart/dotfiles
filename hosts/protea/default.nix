@@ -120,9 +120,9 @@ inputs.nixpkgs.lib.nixosSystem rec {
         LC_TIME = "en_GB.UTF-8";
       };
 
-      publicKeys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEurT4rFA4j+/d61WxSKlymCV8vUZa0rGZv3VIHdZxji ES mac"
-      ];
+      # publicKeys = [
+      #   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEurT4rFA4j+/d61WxSKlymCV8vUZa0rGZv3VIHdZxji ES mac"
+      # ];
     }
   ];
 }
