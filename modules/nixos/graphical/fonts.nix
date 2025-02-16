@@ -1,13 +1,20 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-let fontName = "Victor Mono";
-in {
+let
+  fontName = "Victor Mono";
+in
+{
 
   config = lib.mkIf (config.gui.enable && pkgs.stdenv.isLinux) {
 
     fonts.packages = with pkgs; [
       victor-mono # Used for Vim and Terminal
-      (nerdfonts.override { fonts = [ "Hack" ]; }) # For Polybar, Rofi
+      nerd-fonts.hack # For Polybar, Rofi
     ];
     fonts.fontconfig.defaultFonts.monospace = [ fontName ];
 

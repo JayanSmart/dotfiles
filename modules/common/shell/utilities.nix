@@ -10,7 +10,8 @@ let
     .terraform/
     .target/
     /Library/'';
-in {
+in
+{
 
   config = {
 
@@ -32,8 +33,8 @@ in {
         lf # File viewer
         qrencode # Generate qr codes
         rsync # Copy folders
-        ren # Rename files
-        rep # Replace text in files
+        # ren # Rename files
+        # rep # Replace text in files
         ripgrep # grep
         sd # sed
         tealdeer # Cheatsheets

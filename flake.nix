@@ -130,15 +130,15 @@
     };
 
     # Ren and rep - CLI find and replace
-    rep = {
-      url = "github:robenkleene/rep-grep";
-      flake = false;
-    };
-    ren = {
-      url = "github:robenkleene/ren-find";
-      flake = false;
-    };
-
+    # rep = {
+    #   url = "github:robenkleene/rep-grep";
+    #   flake = false;
+    # };
+    # ren = {
+    #   url = "github:robenkleene/ren-find";
+    #   flake = false;
+    # };
+    #
     # Firefox addon from outside the extension store
     # bypass-paywalls-clean = {
     #   # https://gitlab.com/magnolia1234/bpc-uploads/-/commits/master/?ref_type=HEADS

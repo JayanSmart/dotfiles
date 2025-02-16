@@ -24,6 +24,13 @@ inputs.nixpkgs.lib.nixosSystem rec {
       physical = true;
       networking.hostName = "protea";
 
+      nix.settings = {
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+      };
+
       boot.initrd.availableKernelModules = [
         "xhci_pci"
         "nvme"
@@ -76,24 +83,24 @@ inputs.nixpkgs.lib.nixosSystem rec {
         # udisks2.enable = true;
       };
 
-      # tailscale = {
-      #   enable = true;
-      #   credentialsFile = ../../private/tailscale.age;
-      # };
+      tailscale = {
+        enable = true;
+        credentialsFile = ../../private/tailscale_protea.age;
+      };
 
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
       #########################
       # Define a user account. Don't forget to set a password with ‘passwd’.
-      users.users.jayan = {
-        isNormalUser = true;
-        description = "Jayan Smart";
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-        ];
-      };
+      # users.users.jayan = {
+      #   isNormalUser = true;
+      #   description = "Jayan Smart";
+      #   extraGroups = [
+      #     "networkmanager"
+      #     "wheel"
+      #   ];
+      # };
 
       # Set your time zone.
       time.timeZone = "Europe/London";
@@ -112,6 +119,10 @@ inputs.nixpkgs.lib.nixosSystem rec {
         LC_TELEPHONE = "en_GB.UTF-8";
         LC_TIME = "en_GB.UTF-8";
       };
+
+      # publicKeys = [
+      #   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEurT4rFA4j+/d61WxSKlymCV8vUZa0rGZv3VIHdZxji ES mac"
+      # ];
     }
   ];
 }
