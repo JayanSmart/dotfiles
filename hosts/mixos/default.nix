@@ -15,6 +15,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.home-manager.nixosModules.home-manager
     ../../modules/common
     ../../modules/nixos
+    ../../modules/nixos/hardware/graphics.nix
     {
       nixpkgs.overlays = overlays;
       system.stateVersion = "23.11";

@@ -2,7 +2,7 @@
 {
   imports = [
     ./openrgb.nix
-    ./graphics.nix
+    # ./graphics.nix
   ];
 
   options = {
