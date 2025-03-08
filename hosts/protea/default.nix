@@ -44,17 +44,13 @@ inputs.nixpkgs.lib.nixosSystem rec {
       boot.extraModulePackages = [ ];
 
       fileSystems."/" = {
-        device = "/dev/disk/by-uuid/f0e4415d-9235-4bbb-b4eb-3c12b86a4757";
+        device = "/dev/disk/by-label/nixos";
         fsType = "ext4";
       };
 
       fileSystems."/boot" = {
-        device = "/dev/disk/by-uuid/57FA-64DC";
+        device = "/dev/disk/by-label/boot";
         fsType = "vfat";
-        options = [
-          "fmask=0077"
-          "dmask=0077"
-        ];
       };
 
       hardware.enableRedistributableFirmware = true;
