@@ -79,10 +79,10 @@ inputs.nixpkgs.lib.nixosSystem rec {
         # udisks2.enable = true;
       };
 
-      tailscale = {
-        enable = true;
-        credentialsFile = ../../private/tailscale_protea.age;
-      };
+      # tailscale = {
+      #   enable = true;
+      #   credentialsFile = ../../private/tailscale_protea.age;
+      # };
 
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
