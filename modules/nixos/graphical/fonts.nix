@@ -1,21 +1,15 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, pkgs, lib, ... }:
 
-let
-  fontName = "Victor Mono";
-in
-{
+let fontName = "Victor Mono";
+in {
 
   config = lib.mkIf (config.gui.enable && pkgs.stdenv.isLinux) {
 
-    fonts.packages = with pkgs; [
-      victor-mono # Used for Vim and Terminal
-      nerd-fonts.hack # For Polybar, Rofi
-    ];
+    fonts.packages = with pkgs;
+      [
+        victor-mono # Used for Vim and Terminal
+        #nerd-fonts.hack # For Polybar, Rofi
+      ];
     fonts.fontconfig.defaultFonts.monospace = [ fontName ];
 
     home-manager.users.${config.user} = {
